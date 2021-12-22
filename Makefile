@@ -1,3 +1,6 @@
+all: bytes copy test write
+	./write
+
 bytes: bytes.o
 	ld -T bytes.ld -o bytes bytes.o
 
