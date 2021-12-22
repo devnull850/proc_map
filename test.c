@@ -28,22 +28,19 @@ int main(void) {
 
 	i = 0;
 
-	while (1) {
-		if ((ch = fgetc(fd)) == EOF) {
-			break;
-		}
-
+	while ((ch = fgetc(fd)) != EOF) {
 		if (ch == 0x0a) {
 			line[i] = 0;
-			i = -1;
+			i = 0;
 			
 			if (strstr(line, "/test")) {
 				break;
 			}
 		}
-
-		line[i] = ch;
-		++i;
+		else {
+			line[i] = ch;
+			++i;
+		}
 	}
 
 	if (fclose(fd) == EOF) {
